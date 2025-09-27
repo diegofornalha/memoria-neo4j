@@ -1,0 +1,18 @@
+# Dependências principais
+neo4j>=5.0.0,<6.0.0
+pydantic>=2.0.0,<3.0.0
+
+# Dependências de desenvolvimento e teste
+pytest>=7.0.0,<8.0.0
+pytest-asyncio>=0.21.0,<1.0.0
+pytest-cov>=4.0.0,<5.0.0
+pytest-mock>=3.0.0,<4.0.0
+
+# Análise estática e formatação
+mypy>=1.0.0,<2.0.0
+ruff>=0.1.0,<1.0.0
+black>=23.0.0,<24.0.0
+
+# Profiling e performance
+memory-profiler>=0.60.0,<1.0.0
+line-profiler>=4.0.0,<5.0.0
