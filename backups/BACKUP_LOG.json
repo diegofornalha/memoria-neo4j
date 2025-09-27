@@ -1,0 +1,14 @@
+{
+  "backups": [
+    {
+      "timestamp": "2025-09-26T22:49:36.191211",
+      "file": "neo4j_backup_20250926_224936.json",
+      "zip": "neo4j_backup_20250926_224936.zip",
+      "hash": "432bf8d511c4a2b655129977fe324d2fa18a8d1f29a39d18adaf56735c4cecfd",
+      "nodes": 1027,
+      "relationships": 538,
+      "size_mb": 0.9,
+      "zip_size_mb": 0.19
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 #!/bin/bash
-# 🔒 Neo4j Backup Seguro MCP
-# Usa o sistema seguro backup_mcp.py após análise de vulnerabilidades
+# 🔒 Neo4j Backup Completo MCP v3.0
+# Sistema atualizado com exportação completa de todos os nós e relacionamentos
 
 set -e
 
@@ -8,7 +8,7 @@ set -e
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_ROOT="$(dirname "$SCRIPT_DIR")"
 SRC_DIR="${PROJECT_ROOT}/src"
-BACKUP_DIR="${PROJECT_ROOT}/memory-backups-mcp"
+BACKUP_DIR="${PROJECT_ROOT}/backups"
 
 # Cores
 GREEN='\033[0;32m'
@@ -19,7 +19,7 @@ PURPLE='\033[0;35m'
 NC='\033[0m'
 
 echo -e "${PURPLE}╔══════════════════════════════════════════════╗${NC}"
-echo -e "${PURPLE}║     🔒 Neo4j Backup Seguro MCP v2.0         ║${NC}"
+echo -e "${PURPLE}║     🔒 Neo4j Backup Completo MCP v3.0       ║${NC}"
 echo -e "${PURPLE}╚══════════════════════════════════════════════╝${NC}\n"
 
 # Verificar se o diretório src existe
@@ -42,20 +42,20 @@ fi
 export NEO4J_URI="${NEO4J_URI:-bolt://127.0.0.1:7687}"
 export NEO4J_USERNAME="${NEO4J_USERNAME:-neo4j}"
 
-echo -e "${CYAN}📊 Iniciando backup seguro via MCP...${NC}"
-echo -e "${CYAN}📍 Usando: ${SRC_DIR}/backup_mcp.py${NC}\n"
+echo -e "${CYAN}📊 Iniciando backup completo do Neo4j...${NC}"
+echo -e "${CYAN}📍 Usando método atualizado com exportação total${NC}\n"
 
-# Executar script Python seguro
+# Executar novo script de backup completo
 cd "$PROJECT_ROOT"
-python3 "${SRC_DIR}/backup_mcp.py"
+python3 "${SCRIPT_DIR}/neo4j-backup-complete.py"
 
 if [ $? -eq 0 ]; then
     echo -e "\n${GREEN}╔══════════════════════════════════════════════╗${NC}"
-    echo -e "${GREEN}║    ✅ Backup Seguro MCP Concluído!          ║${NC}"
+    echo -e "${GREEN}║    ✅ Backup Completo Concluído!            ║${NC}"
     echo -e "${GREEN}╚══════════════════════════════════════════════╝${NC}\n"
 
-    echo -e "${CYAN}📦 Últimos backups seguros:${NC}"
-    ls -lh "${BACKUP_DIR}"/SECURE_MCP_*.zip 2>/dev/null | tail -5 | while read line; do
+    echo -e "${CYAN}📦 Últimos backups:${NC}"
+    ls -lh "${BACKUP_DIR}"/neo4j_backup_*.zip 2>/dev/null | tail -5 | while read line; do
         echo -e "  ${GREEN}→${NC} $line"
     done
 
