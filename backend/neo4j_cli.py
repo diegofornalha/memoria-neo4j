@@ -14,6 +14,9 @@ from utils import (
     parse_query_result,
     get_node_count,
     get_relationship_count,
+    validate_cypher_identifier,
+    sanitize_cypher_identifier,
+    sanitize_cypher_string,
     logger
 )
 from neo4j_backup_restore import Neo4jBackupRestore
@@ -132,10 +135,16 @@ def clean_command(args: List[str]) -> None:
         if idx + 1 < len(args):
             node_type = args[idx + 1]
 
-            # Contar nos do tipo - usando query parametrizada via CLI
-            # Nota: neo4j-query CLI nao suporta parametros, entao sanitizamos aqui
-            # Em producao ideal, usar driver diretamente com parametros
-            safe_type = node_type.replace("'", "").replace('"', '').replace('\\', '')
+            # Sanitizar usando funcao apropriada do utils
+            # Usa sanitize_cypher_string para valores de propriedade
+            safe_type = sanitize_cypher_string(node_type)
+
+            # Validar que o tipo nao esta vazio apos sanitizacao
+            if not safe_type or safe_type == node_type and not validate_cypher_identifier(node_type):
+                # Se contem caracteres especiais que nao sao alfanumericos em posicao de valor
+                # a sanitizacao ja tratou, entao podemos prosseguir
+                pass
+
             result = execute_query(f"MATCH (n:Learning {{type: '{safe_type}'}}) RETURN count(n) as count")
             count = parse_query_result(result)
 
