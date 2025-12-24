@@ -3,20 +3,24 @@
 CLI Unificado para Neo4j - Todos os comandos integrados
 """
 import sys
-import os
 import json
 from pathlib import Path
-from datetime import datetime
-import subprocess
+from typing import List, Optional
 
-# Adicionar o diretório ao path para importar neo4j_backup_restore
-sys.path.insert(0, '/Users/2a/.claude/memoria-neo4j')
+# Importar configuracoes e utilitarios centralizados
+from config import BACKUP_DIR
+from utils import (
+    execute_query,
+    parse_query_result,
+    get_node_count,
+    get_relationship_count,
+    logger
+)
 from neo4j_backup_restore import Neo4jBackupRestore
 
-BACKUP_DIR = Path("/Users/2a/.claude/memoria-neo4j/backups")
 
-def print_header(title, color="cyan"):
-    """Imprime cabeçalho colorido"""
+def print_header(title: str, color: str = "cyan") -> None:
+    """Imprime cabecalho colorido"""
     colors = {
         "cyan": "\033[0;36m",
         "green": "\033[0;32m",
@@ -31,17 +35,8 @@ def print_header(title, color="cyan"):
     print(f"{color_code}║{title.center(50)}║{reset}")
     print(f"{color_code}╚{'═' * 50}╝{reset}\n")
 
-def execute_query(query):
-    """Executa query via neo4j-query"""
-    try:
-        cmd = ['/Users/2a/.claude/neo4j-query', query]
-        result = subprocess.run(cmd, capture_output=True, text=True)
-        return result.stdout
-    except Exception as e:
-        print(f"❌ Erro: {e}")
-        return None
 
-def backup_command(args):
+def backup_command(args: List[str]) -> None:
     """Comando de backup"""
     print_header("🔒 Neo4j Backup", "green")
 
@@ -59,20 +54,21 @@ def backup_command(args):
     finally:
         neo4j.close()
 
-def restore_command(args):
-    """Comando de restauração"""
+
+def restore_command(args: List[str]) -> None:
+    """Comando de restauracao"""
     print_header("🔄 Neo4j Restore", "cyan")
 
     if not args:
-        # Listar backups disponíveis
-        print("📦 Backups disponíveis:\n")
+        # Listar backups disponiveis
+        print("📦 Backups disponiveis:\n")
         backups = sorted(BACKUP_DIR.glob("BACKUP_COMPLETE_*.zip"))
 
         if not backups:
             print("❌ Nenhum backup encontrado")
             return
 
-        for i, backup in enumerate(backups[-10:], 1):  # Últimos 10
+        for i, backup in enumerate(backups[-10:], 1):  # Ultimos 10
             size_mb = backup.stat().st_size / 1024 / 1024
             print(f"  [{i}] {backup.name} ({size_mb:.2f} MB)")
 
@@ -81,9 +77,9 @@ def restore_command(args):
 
     backup_file = args[0]
 
-    # Se for apenas nome, procurar no diretório
+    # Se for apenas nome, procurar no diretorio
     if not Path(backup_file).exists():
-        backup_file = BACKUP_DIR / backup_file
+        backup_file = str(BACKUP_DIR / backup_file)
 
     neo4j = Neo4jBackupRestore()
     try:
@@ -91,41 +87,34 @@ def restore_command(args):
     finally:
         neo4j.close()
 
-def clean_command(args):
+
+def clean_command(args: List[str]) -> None:
     """Comando de limpeza"""
     print_header("🗑️  Neo4j Clean", "yellow")
 
-    # Verificar estado atual
-    result = execute_query("MATCH (n) RETURN count(n) as count")
-    if result:
-        lines = result.strip().split('\n')
-        if len(lines) > 1:
-            node_count = lines[1]
-            print(f"📊 Nós atuais: {node_count}")
+    # Verificar estado atual usando funcoes do utils
+    node_count = get_node_count()
+    rel_count = get_relationship_count()
 
-    result = execute_query("MATCH ()-[r]->() RETURN count(r) as count")
-    if result:
-        lines = result.strip().split('\n')
-        if len(lines) > 1:
-            rel_count = lines[1]
-            print(f"📊 Relações atuais: {rel_count}\n")
+    print(f"📊 Nos atuais: {node_count}")
+    print(f"📊 Relacoes atuais: {rel_count}\n")
 
-    # Opções
+    # Opcoes
     if "--dry-run" in args:
-        print("🔍 Modo preview (nenhuma alteração será feita)")
+        print("🔍 Modo preview (nenhuma alteracao sera feita)")
         return
 
     if "--all" in args:
-        print("⚠️  ATENÇÃO: Isso removerá TODOS os dados!")
-        print("📦 Um backup será criado automaticamente\n")
+        print("⚠️  ATENCAO: Isso removera TODOS os dados!")
+        print("📦 Um backup sera criado automaticamente\n")
 
         confirm = input("Confirmar limpeza total? (yes/no): ")
         if confirm.lower() != 'yes':
-            print("❌ Operação cancelada")
+            print("❌ Operacao cancelada")
             return
 
-        # Criar backup de segurança
-        print("\n💾 Criando backup de segurança...")
+        # Criar backup de seguranca
+        print("\n💾 Criando backup de seguranca...")
         neo4j = Neo4jBackupRestore()
         try:
             neo4j.create_backup("pre_clean")
@@ -143,70 +132,66 @@ def clean_command(args):
         if idx + 1 < len(args):
             node_type = args[idx + 1]
 
-            # Contar nós do tipo
-            result = execute_query(f"MATCH (n:Learning {{type: '{node_type}'}}) RETURN count(n) as count")
-            if result:
-                lines = result.strip().split('\n')
-                if len(lines) > 1:
-                    count = lines[1]
-                    print(f"📊 Nós do tipo '{node_type}': {count}\n")
+            # Contar nos do tipo - usando query parametrizada via CLI
+            # Nota: neo4j-query CLI nao suporta parametros, entao sanitizamos aqui
+            # Em producao ideal, usar driver diretamente com parametros
+            safe_type = node_type.replace("'", "").replace('"', '').replace('\\', '')
+            result = execute_query(f"MATCH (n:Learning {{type: '{safe_type}'}}) RETURN count(n) as count")
+            count = parse_query_result(result)
 
-                    confirm = input(f"Remover todos os nós tipo '{node_type}'? (yes/no): ")
-                    if confirm.lower() == 'yes':
-                        execute_query(f"MATCH (n:Learning {{type: '{node_type}'}}) DETACH DELETE n")
-                        print(f"✅ Nós do tipo '{node_type}' removidos")
+            if count:
+                print(f"📊 Nos do tipo '{node_type}': {count}\n")
+
+                confirm = input(f"Remover todos os nos tipo '{node_type}'? (yes/no): ")
+                if confirm.lower() == 'yes':
+                    execute_query(f"MATCH (n:Learning {{type: '{safe_type}'}}) DETACH DELETE n")
+                    print(f"✅ Nos do tipo '{node_type}' removidos")
 
     elif "--orphans" in args:
-        # Remover nós órfãos
+        # Remover nos orfaos
         result = execute_query("MATCH (n) WHERE NOT (n)--() RETURN count(n) as count")
-        if result:
-            lines = result.strip().split('\n')
-            if len(lines) > 1:
-                count = lines[1]
-                print(f"📊 Nós órfãos encontrados: {count}\n")
+        count = parse_query_result(result)
 
-                if int(count) > 0:
-                    confirm = input("Remover nós órfãos? (yes/no): ")
+        if count:
+            print(f"📊 Nos orfaos encontrados: {count}\n")
+
+            try:
+                count_int = int(count)
+                if count_int > 0:
+                    confirm = input("Remover nos orfaos? (yes/no): ")
                     if confirm.lower() == 'yes':
                         execute_query("MATCH (n) WHERE NOT (n)--() DELETE n")
-                        print("✅ Nós órfãos removidos")
+                        print("✅ Nos orfaos removidos")
+            except ValueError:
+                pass
     else:
-        print("Opções disponíveis:")
+        print("Opcoes disponiveis:")
         print("  --all        : Limpar todo o banco")
-        print("  --type <tipo>: Limpar nós de um tipo específico")
-        print("  --orphans    : Limpar nós órfãos (sem relações)")
+        print("  --type <tipo>: Limpar nos de um tipo especifico")
+        print("  --orphans    : Limpar nos orfaos (sem relacoes)")
         print("  --dry-run    : Preview sem executar")
 
-def manager_command(args):
+
+def manager_command(args: List[str]) -> None:
     """Comando gerenciador interativo"""
     print_header("🔒 Neo4j Manager", "purple")
 
     while True:
-        print("\n📁 Operações Disponíveis:")
-        print("  [1] 📊 Status e Estatísticas")
+        print("\n📁 Operacoes Disponiveis:")
+        print("  [1] 📊 Status e Estatisticas")
         print("  [2] 💾 Criar Backup")
         print("  [3] 🔄 Restaurar Backup")
         print("  [4] 🗑️  Limpar Dados")
         print("  [5] 🔍 Consultar Grafo")
         print("  [Q] Sair\n")
 
-        choice = input("Escolha uma opção: ").strip().upper()
+        choice = input("Escolha uma opcao: ").strip().upper()
 
         if choice == '1':
-            # Status
-            print("\n📊 Estatísticas do Grafo:\n")
-
-            result = execute_query("MATCH (n) RETURN count(n) as count")
-            if result:
-                lines = result.strip().split('\n')
-                if len(lines) > 1:
-                    print(f"Total de nós: {lines[1]}")
-
-            result = execute_query("MATCH ()-[r]->() RETURN count(r) as count")
-            if result:
-                lines = result.strip().split('\n')
-                if len(lines) > 1:
-                    print(f"Total de relações: {lines[1]}")
+            # Status usando funcoes do utils
+            print("\n📊 Estatisticas do Grafo:\n")
+            print(f"Total de nos: {get_node_count()}")
+            print(f"Total de relacoes: {get_relationship_count()}")
 
             result = execute_query("""
                 MATCH (n:Learning)
@@ -219,7 +204,7 @@ def manager_command(args):
                 lines = result.strip().split('\n')[1:]
                 for line in lines[:5]:
                     if line:
-                        print(f"  • {line}")
+                        print(f"  - {line}")
 
         elif choice == '2':
             # Backup
@@ -239,10 +224,10 @@ def manager_command(args):
 
         elif choice == '4':
             # Limpar
-            print("\nOpções de limpeza:")
+            print("\nOpcoes de limpeza:")
             print("  1. Limpar tudo")
             print("  2. Limpar por tipo")
-            print("  3. Limpar órfãos")
+            print("  3. Limpar orfaos")
 
             clean_choice = input("Escolha: ").strip()
 
@@ -263,51 +248,41 @@ def manager_command(args):
                     print(f"\n{result}")
 
         elif choice == 'Q':
-            print("\n👋 Até logo!")
+            print("\n👋 Ate logo!")
             break
 
-def status_command(args):
-    """Comando de status rápido"""
+
+def status_command(args: List[str]) -> None:
+    """Comando de status rapido"""
     print_header("📊 Neo4j Status", "green")
 
-    # Nós
-    result = execute_query("MATCH (n) RETURN count(n) as count")
-    if result:
-        lines = result.strip().split('\n')
-        if len(lines) > 1:
-            print(f"📊 Total de nós: {lines[1]}")
-
-    # Relações
-    result = execute_query("MATCH ()-[r]->() RETURN count(r) as count")
-    if result:
-        lines = result.strip().split('\n')
-        if len(lines) > 1:
-            print(f"🔗 Total de relações: {lines[1]}")
+    # Usar funcoes do utils
+    print(f"📊 Total de nos: {get_node_count()}")
+    print(f"🔗 Total de relacoes: {get_relationship_count()}")
 
     # Learning nodes
     result = execute_query("MATCH (n:Learning) RETURN count(n) as count")
-    if result:
-        lines = result.strip().split('\n')
-        if len(lines) > 1:
-            print(f"🎓 Nós Learning: {lines[1]}")
+    learning_count = parse_query_result(result)
+    if learning_count:
+        print(f"🎓 Nos Learning: {learning_count}")
 
-    # Últimos backups
-    print("\n📦 Últimos backups:")
+    # Ultimos backups
+    print("\n📦 Ultimos backups:")
     backups = sorted(BACKUP_DIR.glob("*.zip"))[-3:]
     for backup in backups:
         size_mb = backup.stat().st_size / 1024 / 1024
-        print(f"  • {backup.name} ({size_mb:.2f} MB)")
+        print(f"  - {backup.name} ({size_mb:.2f} MB)")
 
-def main():
-    """Função principal do CLI"""
 
+def main() -> None:
+    """Funcao principal do CLI"""
     if len(sys.argv) < 2:
-        print("Neo4j CLI - Comandos disponíveis:")
+        print("Neo4j CLI - Comandos disponiveis:")
         print("  backup   - Criar backup completo")
         print("  restore  - Restaurar backup")
         print("  clean    - Limpar dados")
         print("  manager  - Gerenciador interativo")
-        print("  status   - Status rápido")
+        print("  status   - Status rapido")
         return
 
     command = sys.argv[1]
@@ -326,6 +301,7 @@ def main():
     else:
         print(f"❌ Comando desconhecido: {command}")
         print("Use: backup, restore, clean, manager, status")
+
 
 if __name__ == "__main__":
     main()
