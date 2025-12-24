@@ -1,0 +1,635 @@
+{
+  "metadata": {
+    "version": "3.1",
+    "timestamp": "20251224_172421",
+    "date": "2025-12-24T17:24:21.566778",
+    "tag": "refatoracao-completa",
+    "source": "MCP neo4j-memory",
+    "statistics": {
+      "total_entities": 50,
+      "total_relations": 21
+    }
+  },
+  "entities": [
+    {
+      "name": "Aprendizado: Criar Agente Python",
+      "type": "learning",
+      "observations": [
+        "Passo 1: Instalar claude-agent-sdk via pip",
+        "Passo 2: Configurar ANTHROPIC_API_KEY no ambiente",
+        "Passo 3: Importar Agent do SDK",
+        "Passo 4: Criar instância Agent()",
+        "Passo 5: Usar agent.query() para enviar mensagens",
+        "Projeto de referência: Hello Agent Project",
+        "Usar async/await porque SDK é assíncrono",
+        "query() retorna AsyncIterator - usar 'async for'",
+        "AssistantMessage contém lista de ContentBlocks",
+        "TextBlock é o tipo mais comum de conteúdo"
+      ]
+    },
+    {
+      "name": "Hello Agent Project",
+      "type": "project",
+      "observations": [
+        "Projeto didático para aprender Claude Agent SDK em Python",
+        "Estrutura mínima: main.py, requirements.txt, .env.example, .gitignore, README.md",
+        "Objetivo: código simples e bem comentado para iniciantes",
+        "Dependência: claude-agent-sdk",
+        "Local sugerido: /Users/2a/hello-agent/",
+        "Projeto criado em /Users/2a/.claude/mcp-neo4j-py/hello-agent/",
+        "Sintaxe verificada e aprovada",
+        "Pronto para execução com: python main.py"
+      ]
+    },
+    {
+      "name": "Aprendizado: Estrutura Projeto SDK",
+      "type": "learning",
+      "observations": [
+        "Estrutura mínima: main.py + requirements.txt",
+        "Sempre criar .env.example para documentar variáveis",
+        "Adicionar .env ao .gitignore por segurança",
+        "README deve explicar cada linha do código",
+        "Manter código simples e bem comentado para iniciantes"
+      ]
+    },
+    {
+      "name": "Claude Agent SDK",
+      "type": "technology",
+      "observations": [
+        "SDK oficial da Anthropic para criar agentes com Claude",
+        "Disponível em Python e TypeScript",
+        "Requer ANTHROPIC_API_KEY para funcionar",
+        "Pacote PyPI: claude-agent-sdk",
+        "Permite criar agentes que conversam com Claude API"
+      ]
+    },
+    {
+      "name": "Hello Agent - README",
+      "type": "documentation",
+      "observations": [
+        "Explica o que é Agent SDK em 2 frases",
+        "Passo a passo para configurar API key",
+        "Como executar o projeto",
+        "Explicação de cada linha do código",
+        "Próximos passos para aprender mais"
+      ]
+    },
+    {
+      "name": "Hello Agent - main.py",
+      "type": "code_file",
+      "observations": [
+        "Arquivo principal do projeto Hello Agent",
+        "Importa claude_agent_sdk.Agent",
+        "Cria instância do Agent()",
+        "Usa agent.query() para enviar mensagem",
+        "Código mínimo com 4 passos comentados"
+      ]
+    },
+    {
+      "name": "Título: 🚀 Migrei de Cursor para Claude Code - 7 Dias DEPOIS",
+      "type": "viral_title",
+      "observations": [
+        "Texto completo: 🚀 Migrei de Cursor para Claude Code - 7 Dias DEPOIS",
+        "CTR Score: 9.2/10",
+        "Fórmula usada: Transformação Rápida",
+        "Comprimento: 58 caracteres",
+        "Power words: Migrei, 7 Dias, DEPOIS",
+        "Emoji estratégico: 🚀 (transformação + progresso)",
+        "Número concreto: 7 dias (timeline específica)",
+        "Keywords: claude code, cursor, migração, experiência real, review",
+        "Data: 2025-12-19",
+        "Context score: 7.0/10",
+        "Views estimada: 15K-35K",
+        "Ângulo: Case study pessoal com timeline específica"
+      ]
+    },
+    {
+      "name": "Título: 🔥 5 Dicas da Cursor que Claude Code FAZ MELHOR",
+      "type": "viral_title",
+      "observations": [
+        "Texto completo: 🔥 5 Dicas da Cursor que Claude Code FAZ MELHOR",
+        "CTR Score: 9.5/10",
+        "Fórmula usada: Lista Específica",
+        "Comprimento: 53 caracteres",
+        "Power words: MELHOR, 5 Dicas específicas",
+        "Emoji estratégico: 🔥 (impacto + revelação)",
+        "Número concreto: 5 dicas (lista tangível)",
+        "Keywords: claude code, cursor, dicas, comparação técnica, IDE",
+        "Data: 2025-12-19",
+        "Context score: 7.0/10",
+        "Views estimada: 15K-35K",
+        "Ângulo: Lista específica de vantagens concretas"
+      ]
+    },
+    {
+      "name": "Título: ⚡ Claude Code vs Cursor - Um é 3x MAIS PRODUTIVO",
+      "type": "viral_title",
+      "observations": [
+        "Texto completo: ⚡ Claude Code vs Cursor - Um é 3x MAIS PRODUTIVO",
+        "CTR Score: 9.8/10",
+        "Fórmula usada: Comparação Brutal",
+        "Comprimento: 49 caracteres",
+        "Power words: vs, 3x, MAIS PRODUTIVO",
+        "Emoji estratégico: ⚡ (velocidade + impacto)",
+        "Número concreto: 3x (métrica tangível)",
+        "Keywords: claude code, cursor, comparação, produtividade, IDE",
+        "Data: 2025-12-19",
+        "Context score: 7.0/10",
+        "Views estimada: 15K-35K",
+        "Ângulo: Comparação head-to-head com números concretos"
+      ]
+    },
+    {
+      "name": "Validação: Claude Code vs Cursor Dicas",
+      "type": "validation",
+      "observations": [
+        "Score: 7.0/10 - Adequado mas precisa reestruturação",
+        "Viral Potential: 6.5/10 - Ideia confusa e genérica",
+        "Technical Value: 7.0/10 - Comparação tem valor mas falta especificidade",
+        "Audience Fit: 8.5/10 - Público brasileiro busca isso, baixa concorrência",
+        "Uniqueness: 6.0/10 - Falta ângulo diferenciado",
+        "Melhor ângulo: Comparação técnica head-to-head com números concretos",
+        "Views estimada: 15K-35K (pode chegar a 50K+ com ângulo otimizado)",
+        "Sugestões: '5 coisas que Claude Code faz MELHOR', 'Migrei de Cursor - 7 dias depois'",
+        "Data validação: 2025-12-19"
+      ]
+    },
+    {
+      "name": "Título: O que NINGUÉM Está Falando Sobre Kling 2.6 - Som + Imagem Sincronizados",
+      "type": "viral_title",
+      "observations": [
+        "Texto: 🚀 O que NINGUÉM Está Falando Sobre Kling 2.6 - Som + Imagem Sincronizados",
+        "CTR Score: 9.3/10",
+        "Fórmula usada: Segredo Revelado",
+        "Comprimento: 72 caracteres",
+        "Emoji: 🚀 (revelação + descoberta)",
+        "Power words: NINGUÉM, Sincronizados (exclusividade + precisão técnica)",
+        "Diferencial: Promessa de insight único não coberto por outros",
+        "Benefício: Conhecimento exclusivo sobre tecnologia emergente",
+        "FOMO: Informação que público tech ainda não descobriu",
+        "Data: 2025-12-15"
+      ]
+    },
+    {
+      "name": "Título: PRIMEIRO IA que Gera Vídeo + Áudio JUNTO - Kling 2.6 Mudou TUDO",
+      "type": "viral_title",
+      "observations": [
+        "Texto: ⚡ PRIMEIRO IA que Gera Vídeo + Áudio JUNTO - Kling 2.6 Mudou TUDO",
+        "CTR Score: 9.6/10",
+        "Fórmula usada: Novidade Revolucionária",
+        "Comprimento: 66 caracteres",
+        "Emoji: ⚡ (revolução + velocidade)",
+        "Power words: PRIMEIRO, JUNTO, Mudou TUDO (exclusividade + impacto)",
+        "Diferencial: Enfatiza pioneirismo e mudança de paradigma",
+        "Benefício: Feature inédita no mercado",
+        "FOMO: Ser dos primeiros a conhecer tecnologia revolucionária",
+        "Data: 2025-12-15"
+      ]
+    },
+    {
+      "name": "Título: Kling 2.6 vs Sora - VÍDEO + SOM em Uma Tomada (Sora NÃO Consegue)",
+      "type": "viral_title",
+      "observations": [
+        "Texto: 🔥 Kling 2.6 vs Sora - VÍDEO + SOM em Uma Tomada (Sora NÃO Consegue)",
+        "CTR Score: 9.8/10",
+        "Fórmula usada: Comparação Brutal",
+        "Comprimento: 63 caracteres",
+        "Emoji: 🔥 (impacto + exclusividade)",
+        "Power words: vs, Uma Tomada, NÃO Consegue (contraste brutal)",
+        "Diferencial: Comparação direta com líder do mercado (Sora)",
+        "Benefício: Mostra vantagem concreta e mensurável",
+        "FOMO: Tecnologia que concorrentes ainda não têm",
+        "Data: 2025-12-15"
+      ]
+    },
+    {
+      "name": "Ideia: Kling 2.6 IA Gera Vídeo e Áudio Simultâneo",
+      "type": "video_idea",
+      "observations": [
+        "Tema: Kling 2.6 - primeiro modelo IA que gera vídeo + áudio em uma única tomada",
+        "Novidade tecnológica: BREAKING - feature inédita no mercado",
+        "Data: 2025-12-15",
+        "Contexto: Competição direta com Sora, Runway, Pika Labs",
+        "Score viral: 9.3/10 - Altíssimo potencial",
+        "Viral Potential: 9.5/10 (novidade absoluta + timing perfeito + FOMO)",
+        "Technical Value: 9.0/10 (mudança de paradigma real - integração áudio+visual)",
+        "Audience Fit: 9.5/10 (público tech/creators/AI enthusiasts em alta demanda)",
+        "Uniqueness: 9.5/10 (primeiro do mercado com áudio integrado)",
+        "Melhor ângulo: Demonstração lado a lado - Kling 2.6 vs concorrentes mostrando diferença brutal na integração",
+        "Views estimada: 80K-200K"
+      ]
+    },
+    {
+      "name": "Ideia: Fim dos Devs Era IA",
+      "type": "video_idea",
+      "observations": [
+        "Tema: Futuro dos desenvolvedores com IA",
+        "Score: 8.1/10",
+        "Views estimada: 35K-80K",
+        "Melhor ângulo: preparação prática vs apocalipse alarmista",
+        "Data: 2025-12-13",
+        "Título vencedor: A Era do DEV Terminou - Prepare-se AGORA",
+        "CTR vencedor: 9.8/10",
+        "Fórmula: Controvérsia + Urgência"
+      ]
+    },
+    {
+      "name": "Ideia: O Fim dos Devs - NOVA Era da IA",
+      "type": "video_idea",
+      "observations": [
+        "Tema: Futuro dos desenvolvedores com IA, substituição, preparação",
+        "Score validação: 8.1/10 - Alto potencial viral",
+        "Views estimada: 35K-80K"
+      ]
+    },
+    {
+      "name": "Título: 5 Segredos que IA ESCONDE dos Programadores",
+      "type": "viral_title",
+      "observations": [
+        "Texto: 🚀 5 Segredos que IA ESCONDE dos Programadores",
+        "CTR Score: 9.3/10",
+        "Fórmula usada: Segredo Revelado + Lista Específica"
+      ]
+    },
+    {
+      "name": "Título: Do DEVELOPER a IA AGENT em 90 DIAS",
+      "type": "viral_title",
+      "observations": [
+        "Texto: ⚡ Do DEVELOPER a IA AGENT em 90 DIAS",
+        "CTR Score: 9.5/10",
+        "Fórmula usada: Transformação Rápida"
+      ]
+    },
+    {
+      "name": "Título: A Era do DEV Terminou - Prepare-se AGORA",
+      "type": "viral_title",
+      "observations": [
+        "Texto: 🔥 A Era do DEV Terminou - Prepare-se AGORA",
+        "CTR Score: 9.8/10",
+        "Fórmula usada: Controvérsia + Urgência"
+      ]
+    },
+    {
+      "name": "Ideia: O fim dos dev - NOVA era da IA",
+      "type": "video_idea",
+      "observations": [
+        "Tema: Futuro dos desenvolvedores, IA substituindo programadores, preparação",
+        "Score potencial: 9.0+/10"
+      ]
+    },
+    {
+      "name": "Título: Gerente de Projetos vs IA Agent",
+      "type": "video_title",
+      "observations": [
+        "Texto: 🔥 Gerente de Projetos vs IA Agent - Um é 10x MAIS RÁPIDO",
+        "CTR Score: 9.8/10",
+        "Fórmula: Comparação Brutal"
+      ]
+    },
+    {
+      "name": "Ideia: IA Substituindo Gerentes de Projeto",
+      "type": "video_idea",
+      "observations": [
+        "Tema: Agentes IA substituindo gerentes de projeto",
+        "Score: 9.2/10 - Alto potencial viral",
+        "Views estimada: 50K-120K"
+      ]
+    },
+    {
+      "name": "Título: Gerente de Projetos vs IA Agent - Um é 10x MAIS RÁPIDO",
+      "type": "viral_title",
+      "observations": [
+        "Texto completo: 🔥 Gerente de Projetos vs IA Agent - Um é 10x MAIS RÁPIDO",
+        "CTR Score: 9.8/10"
+      ]
+    },
+    {
+      "name": "Padrão: Controvérsia + Substituição de Empregos",
+      "type": "viral_pattern",
+      "observations": [
+        "Estrutura: [CARGO/FUNÇÃO] + IA substitui + prova concreta",
+        "CTR médio: 9.0+"
+      ]
+    },
+    {
+      "name": "Tech Tactix Advisory Group",
+      "type": "company",
+      "observations": [
+        "Vaga: Full Stack Mobile Developer",
+        "Cliente: US healthcare (saúde)",
+        "Status: Candidatura enviada em 08/12/2025"
+      ]
+    },
+    {
+      "name": "Zeta Dados",
+      "type": "company",
+      "observations": [
+        "Vaga: Engenharia de Dados Júnior",
+        "Status: Candidatura enviada em 08/12/2025"
+      ]
+    },
+    {
+      "name": "Nevada Co.",
+      "type": "company",
+      "observations": [
+        "Vagas aplicadas: 2 (Tech Lead Data Scientist + Senior Python Developer)",
+        "Status: 2 candidaturas enviadas em 08/12/2025"
+      ]
+    },
+    {
+      "name": "Envalyss",
+      "type": "company",
+      "observations": [
+        "Vaga: Banco de Talentos | Profissionais de Ciência de Dados (PJ)",
+        "Status: Candidatura enviada em 08/12/2025"
+      ]
+    },
+    {
+      "name": "SwissDataApps",
+      "type": "company",
+      "observations": [
+        "Vaga: Data Scientist NLP",
+        "Status: Candidatura enviada em 08/12/2025"
+      ]
+    },
+    {
+      "name": "Sessão Candidaturas LinkedIn 2025-12-08",
+      "type": "job_application_session",
+      "observations": [
+        "Iniciada em 08/12/2025",
+        "Candidaturas enviadas com sucesso: 6"
+      ]
+    },
+    {
+      "name": "Título: De Pseudo-Líder a Estrategista IA",
+      "type": "viral_title",
+      "observations": [
+        "Texto completo: ⚡ De Pseudo-Líder a Estrategista IA - Programa de Transformação",
+        "CTR Score: 9.8/10"
+      ]
+    },
+    {
+      "name": "Ideia: Programa Mentoria IA para Líderes",
+      "type": "video_idea",
+      "observations": [
+        "Score viral: 7.8/10",
+        "Estimativa de views: 15K-35K"
+      ]
+    },
+    {
+      "name": "Padrão Fórmula: Segredo Revelado",
+      "type": "viral_pattern",
+      "observations": [
+        "Estrutura: [EMOJI] O Segredo dos Líderes TOP em IA",
+        "CTR médio: 9.1+"
+      ]
+    },
+    {
+      "name": "Padrão Fórmula: Comparação Brutal",
+      "type": "viral_pattern",
+      "observations": [
+        "Estrutura: [EMOJI] X vs Y - A VERDADE que NINGUÉM conta",
+        "CTR médio: 9.3+"
+      ]
+    },
+    {
+      "name": "Padrão Fórmula: Transformação Rápida",
+      "type": "viral_pattern",
+      "observations": [
+        "Estrutura: [EMOJI] Do ESTADO_INICIAL ao ESTADO_FINAL em TIMEFRAME",
+        "CTR médio: 9.5+"
+      ]
+    },
+    {
+      "name": "Título Vencedor: De Pseudo-Líder a Estrategista IA",
+      "type": "video_title",
+      "observations": [
+        "CTR Score: 9.8/10",
+        "Fórmula: Transformação Rápida"
+      ]
+    },
+    {
+      "name": "Oportunidade Mercado IA Liderança",
+      "type": "market_opportunity",
+      "observations": [
+        "Público alvo: Leaders, CEOs, managers (25-55 anos)",
+        "Demanda: Crescente (2025-2026)"
+      ]
+    },
+    {
+      "name": "Ideia Video: Programa Mentoria IA para Líderes",
+      "type": "video_idea",
+      "observations": [
+        "Tema: Programa de mentoria em IA focado em líderes"
+      ]
+    },
+    {
+      "name": "Padrão: Mentoria + IA + Liderança",
+      "type": "content_pattern",
+      "observations": [
+        "Combinação: 3 tópicos de alta relevância"
+      ]
+    },
+    {
+      "name": "Ideia: Oportunidade Mentoria IA Líderes",
+      "type": "video_idea",
+      "observations": [
+        "Score avaliação: 7.8/10",
+        "Views estimada: 15K-35K"
+      ]
+    },
+    {
+      "name": "Tarefa #25 - WEB GANTT CE - Módulo Gantt para Odoo 19.0",
+      "type": "task",
+      "observations": [
+        "ID Odoo: 25",
+        "Deadline: 20/12/2025",
+        "Status: Backlog"
+      ]
+    },
+    {
+      "name": "Tarefa #22 - Criar Guia de Implementações Comuns Odoo 19",
+      "type": "task",
+      "observations": [
+        "ID Odoo: 22",
+        "Deadline: 15/01/2026",
+        "Status: Backlog"
+      ]
+    },
+    {
+      "name": "Tarefa #2 - Implementar Validador de Código Odoo 19",
+      "type": "task",
+      "observations": [
+        "ID Odoo: 2",
+        "Deadline: 08/12/2025",
+        "Status: Em Progresso"
+      ]
+    },
+    {
+      "name": "Tarefa #5 - Documentar Padrões Obrigatórios Odoo 19",
+      "type": "task",
+      "observations": [
+        "ID Odoo: 5",
+        "Status: Em Progresso",
+        "Progresso: 30%"
+      ]
+    },
+    {
+      "name": "Estágio Em Progresso",
+      "type": "stage",
+      "observations": [
+        "ID no Odoo: 10",
+        "Emoji: 🔨"
+      ]
+    },
+    {
+      "name": "Estágio Backlog",
+      "type": "stage",
+      "observations": [
+        "ID no Odoo: 9",
+        "Emoji: 📋"
+      ]
+    },
+    {
+      "name": "Tarefa #20 - Documentar Configuração MCP DBHub para Odoo",
+      "type": "task",
+      "observations": [
+        "ID Odoo: 20",
+        "Progresso: 100%",
+        "Status: Encerrado"
+      ]
+    },
+    {
+      "name": "Tarefa #18 - Implementar Sistema de Timesheet Funcional",
+      "type": "task",
+      "observations": [
+        "ID Odoo: 18",
+        "Progresso: 100%",
+        "Status: Encerrado"
+      ]
+    },
+    {
+      "name": "Tarefa #16 - Criar ROADMAP.md com Arquitetura Skills como Datalake",
+      "type": "task",
+      "observations": [
+        "ID Odoo: 16",
+        "Progresso: 100%",
+        "Status: Encerrado"
+      ]
+    },
+    {
+      "name": "Brand Guidelines Anthropic",
+      "type": "concept",
+      "observations": [
+        "Skill localizada em /Users/2a/.claude/skills/brand-guidelines/SKILLS.md"
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "source": "Aprendizado: Criar Agente Python",
+      "target": "Hello Agent Project",
+      "relationType": "REFERENCES"
+    },
+    {
+      "source": "Aprendizado: Criar Agente Python",
+      "target": "Claude Agent SDK",
+      "relationType": "TEACHES_ABOUT"
+    },
+    {
+      "source": "Aprendizado: Estrutura Projeto SDK",
+      "target": "Hello Agent Project",
+      "relationType": "APPLIES_TO"
+    },
+    {
+      "source": "Hello Agent Project",
+      "target": "Claude Agent SDK",
+      "relationType": "USES"
+    },
+    {
+      "source": "Hello Agent Project",
+      "target": "Hello Agent - README",
+      "relationType": "HAS_FILE"
+    },
+    {
+      "source": "Hello Agent Project",
+      "target": "Hello Agent - main.py",
+      "relationType": "HAS_FILE"
+    },
+    {
+      "source": "Hello Agent - README",
+      "target": "Hello Agent Project",
+      "relationType": "BELONGS_TO"
+    },
+    {
+      "source": "Hello Agent - main.py",
+      "target": "Hello Agent Project",
+      "relationType": "BELONGS_TO"
+    },
+    {
+      "source": "Aprendizado: Estrutura Projeto SDK",
+      "target": "Claude Agent SDK",
+      "relationType": "TEACHES_ABOUT"
+    },
+    {
+      "source": "Título: O que NINGUÉM Está Falando Sobre Kling 2.6 - Som + Imagem Sincronizados",
+      "target": "Padrão Fórmula: Segredo Revelado",
+      "relationType": "USA_FORMULA"
+    },
+    {
+      "source": "Título: PRIMEIRO IA que Gera Vídeo + Áudio JUNTO - Kling 2.6 Mudou TUDO",
+      "target": "Ideia: Kling 2.6 IA Gera Vídeo e Áudio Simultâneo",
+      "relationType": "GERADO_DE"
+    },
+    {
+      "source": "Título: Kling 2.6 vs Sora - VÍDEO + SOM em Uma Tomada (Sora NÃO Consegue)",
+      "target": "Padrão Fórmula: Comparação Brutal",
+      "relationType": "USA_FORMULA"
+    },
+    {
+      "source": "Ideia: Kling 2.6 IA Gera Vídeo e Áudio Simultâneo",
+      "target": "Padrão: Controvérsia + Substituição de Empregos",
+      "relationType": "SIMILAR_PATTERN"
+    },
+    {
+      "source": "Título: Gerente de Projetos vs IA Agent - Um é 10x MAIS RÁPIDO",
+      "target": "Ideia: IA Substituindo Gerentes de Projeto",
+      "relationType": "GERADO_DE"
+    },
+    {
+      "source": "Título: Gerente de Projetos vs IA Agent - Um é 10x MAIS RÁPIDO",
+      "target": "Padrão: Controvérsia + Substituição de Empregos",
+      "relationType": "USA_PADRÃO"
+    },
+    {
+      "source": "Sessão Candidaturas LinkedIn 2025-12-08",
+      "target": "Tech Tactix Advisory Group",
+      "relationType": "CANDIDATURA_ENVIADA"
+    },
+    {
+      "source": "Sessão Candidaturas LinkedIn 2025-12-08",
+      "target": "Zeta Dados",
+      "relationType": "CANDIDATURA_ENVIADA"
+    },
+    {
+      "source": "Sessão Candidaturas LinkedIn 2025-12-08",
+      "target": "Nevada Co.",
+      "relationType": "CANDIDATURA_ENVIADA"
+    },
+    {
+      "source": "Sessão Candidaturas LinkedIn 2025-12-08",
+      "target": "Envalyss",
+      "relationType": "CANDIDATURA_ENVIADA"
+    },
+    {
+      "source": "Sessão Candidaturas LinkedIn 2025-12-08",
+      "target": "SwissDataApps",
+      "relationType": "CANDIDATURA_ENVIADA"
+    },
+    {
+      "source": "Ideia: Programa Mentoria IA para Líderes",
+      "target": "Título: De Pseudo-Líder a Estrategista IA",
+      "relationType": "GEROU"
+    }
+  ]
+}
