@@ -1,0 +1,79 @@
+{
+  "metadata": {
+    "version": "3.1",
+    "timestamp": "20251224_172247",
+    "date": "2025-12-24T17:22:47.266104",
+    "tag": "pos-refatoracao",
+    "source": "MCP neo4j-memory",
+    "statistics": {
+      "total_entities": 56,
+      "total_relations": 52
+    }
+  },
+  "entities": [
+    {
+      "name": "Aprendizado: Criar Agente Python",
+      "type": "learning",
+      "observations": [
+        "Passo 1: Instalar claude-agent-sdk via pip",
+        "Passo 2: Configurar ANTHROPIC_API_KEY no ambiente",
+        "Passo 3: Importar Agent do SDK",
+        "Passo 4: Criar instância Agent()",
+        "Passo 5: Usar agent.query() para enviar mensagens",
+        "Projeto de referência: Hello Agent Project",
+        "Usar async/await porque SDK é assíncrono",
+        "query() retorna AsyncIterator - usar 'async for'",
+        "AssistantMessage contém lista de ContentBlocks",
+        "TextBlock é o tipo mais comum de conteúdo"
+      ]
+    },
+    {
+      "name": "Hello Agent Project",
+      "type": "project",
+      "observations": [
+        "Projeto didático para aprender Claude Agent SDK em Python",
+        "Estrutura mínima: main.py, requirements.txt, .env.example, .gitignore, README.md",
+        "Objetivo: código simples e bem comentado para iniciantes",
+        "Dependência: claude-agent-sdk",
+        "Local sugerido: /Users/2a/hello-agent/",
+        "Projeto criado em /Users/2a/.claude/mcp-neo4j-py/hello-agent/",
+        "Sintaxe verificada e aprovada",
+        "Pronto para execução com: python main.py"
+      ]
+    },
+    {
+      "name": "Aprendizado: Estrutura Projeto SDK",
+      "type": "learning",
+      "observations": [
+        "Estrutura mínima: main.py + requirements.txt",
+        "Sempre criar .env.example para documentar variáveis",
+        "Adicionar .env ao .gitignore por segurança",
+        "README deve explicar cada linha do código",
+        "Manter código simples e bem comentado para iniciantes"
+      ]
+    },
+    {
+      "name": "Claude Agent SDK",
+      "type": "technology",
+      "observations": [
+        "SDK oficial da Anthropic para criar agentes com Claude",
+        "Disponível em Python e TypeScript",
+        "Requer ANTHROPIC_API_KEY para funcionar",
+        "Pacote PyPI: claude-agent-sdk",
+        "Permite criar agentes que conversam com Claude API"
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "source": "Aprendizado: Criar Agente Python",
+      "target": "Hello Agent Project",
+      "relationType": "REFERENCES"
+    },
+    {
+      "source": "Aprendizado: Criar Agente Python",
+      "target": "Claude Agent SDK",
+      "relationType": "TEACHES_ABOUT"
+    }
+  ]
+}
