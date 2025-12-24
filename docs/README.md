@@ -15,22 +15,40 @@ Sistema de backup seguro para Neo4j desenvolvido após análise completa com age
 ## 🚀 Uso Rápido
 
 ```bash
-# Executar backup seguro
-python3 backup_mcp.py
+# Via CLI (recomendado)
+./script/neo4j-backup backup      # Criar backup
+./script/neo4j-restore restore    # Restaurar
+./script/neo4j-status status      # Ver status
+./script/neo4j-clean clean        # Limpar dados
+
+# Via Python direto
+python3 backend/neo4j_cli.py backup
 ```
 
 ## 📁 Estrutura do Projeto
 
 ```
-memoria-neo4j-claude-code-sdk/
-├── backup_mcp.py           # Sistema principal de backup seguro
-├── memory-backups-mcp/      # Diretório de backups
-│   ├── SECURE_MCP_*.zip    # Backups comprimidos
-│   └── BACKUP_LOG.json     # Histórico de backups
-├── benchmark.py             # Testes de performance
-├── example_usage.py         # Exemplos de uso
-└── docs/                    # Documentação
-    └── README.md           # Este arquivo
+memoria-neo4j/
+├── backend/                     # Scripts Python
+│   ├── neo4j_cli.py            # CLI principal (backup/restore/clean/status)
+│   ├── neo4j_backup_restore.py # Sistema de backup/restore
+│   ├── backup_unificado.py     # Backup unificado
+│   ├── create_full_backup.py   # Criar backup completo
+│   ├── restore_backup.py       # Restaurar backup
+│   ├── benchmark.py            # Testes de performance
+│   └── __init__.py
+├── backups/                     # Diretório de backups
+│   └── BACKUP_COMPLETE_*.json  # Backups exportados
+├── script/                      # Shell scripts e symlinks
+│   ├── neo4j-backup            # -> backend/neo4j_cli.py
+│   ├── neo4j-restore           # -> backend/neo4j_cli.py
+│   ├── neo4j-clean             # -> backend/neo4j_cli.py
+│   ├── neo4j-status            # -> backend/neo4j_cli.py
+│   ├── neo4j-manager           # -> backend/neo4j_cli.py
+│   └── *.sh                    # Scripts MCP
+├── docs/                        # Documentação
+├── requirements.txt
+└── pyproject.toml
 ```
 
 ## 🔐 Melhorias de Segurança Implementadas
@@ -108,18 +126,17 @@ SECURE_MCP_20250917_100433.zip
 
 ## 📈 Estatísticas do Neo4j
 
-Última análise (17/09/2025):
+Última análise (24/12/2024):
 
 | Label | Quantidade |
 |-------|-----------|
-| Learning | 148 nós |
-| Rule | 45 nós |
-| Pattern | 32 nós |
-| Knowledge | 28 nós |
-| Decision | 25 nós |
-| Category | 18 nós |
+| Memory | 245 nós |
+| concept | 33 nós |
+| pattern | 27 nós |
+| learning | 22 nós |
+| task | 14 nós |
 
-**Total**: 296 nós, 237 relacionamentos
+**Total**: 269 nós, 418 relacionamentos
 
 ## 🔄 Restauração
 
