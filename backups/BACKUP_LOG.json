@@ -1,14 +1,14 @@
-{
-  "backups": [
-    {
-      "timestamp": "2025-09-26T22:49:36.191211",
-      "file": "neo4j_backup_20250926_224936.json",
-      "zip": "neo4j_backup_20250926_224936.zip",
-      "hash": "432bf8d511c4a2b655129977fe324d2fa18a8d1f29a39d18adaf56735c4cecfd",
-      "nodes": 1027,
-      "relationships": 538,
-      "size_mb": 0.9,
-      "zip_size_mb": 0.19
-    }
-  ]
-}
+[
+  {
+    "timestamp": "20251023_165414",
+    "date": "2025-10-23T16:54:14.614336",
+    "json_file": "BACKUP_COMPLETE_20251023_165414_test_melhorado.json",
+    "zip_file": "BACKUP_COMPLETE_20251023_165414_test_melhorado.zip",
+    "hash": "86e94019b2d93664555631383278a14200a12c0b957454bc34177745fe4cf45a",
+    "size_bytes": 3082,
+    "compressed_bytes": 1139,
+    "nodes": 10,
+    "relations": 5,
+    "tag": "test_melhorado"
+  }
+]

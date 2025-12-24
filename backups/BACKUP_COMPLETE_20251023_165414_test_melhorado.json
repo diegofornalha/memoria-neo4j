@@ -1,0 +1,160 @@
+{
+  "metadata": {
+    "version": "2.0",
+    "timestamp": "20251023_165414",
+    "date": "2025-10-23T16:54:14.613062",
+    "tag": "test_melhorado",
+    "neo4j_uri": "bolt://localhost:7687",
+    "statistics": {
+      "total_nodes": 10,
+      "total_relations": 5,
+      "labels": {
+        "Learning": 10
+      }
+    }
+  },
+  "nodes": [
+    {
+      "id": 2477,
+      "labels": [
+        "Learning"
+      ],
+      "properties": {
+        "observation": "Sistema de gerenciamento Neo4j",
+        "name": "Neo4j Manager MCP",
+        "type": "tool"
+      }
+    },
+    {
+      "id": 2478,
+      "labels": [
+        "Learning"
+      ],
+      "properties": {
+        "observation": "Automação de browser",
+        "name": "Chrome DevTools MCP",
+        "type": "tool"
+      }
+    },
+    {
+      "id": 2479,
+      "labels": [
+        "Learning"
+      ],
+      "properties": {
+        "observation": "Sistema principal",
+        "name": "Claude Code",
+        "type": "system"
+      }
+    },
+    {
+      "id": 2480,
+      "labels": [
+        "Learning"
+      ],
+      "properties": {
+        "observation": "Sistema de backup",
+        "name": "Backup System",
+        "type": "feature"
+      }
+    },
+    {
+      "id": 2481,
+      "labels": [
+        "Learning"
+      ],
+      "properties": {
+        "observation": "Sistema de hooks",
+        "name": "Hooks System",
+        "type": "feature"
+      }
+    },
+    {
+      "id": 2482,
+      "labels": [
+        "Learning"
+      ],
+      "properties": {
+        "observation": "Padrão de aprendizado identificado",
+        "name": "Learning Pattern",
+        "type": "pattern"
+      }
+    },
+    {
+      "id": 2483,
+      "labels": [
+        "Learning"
+      ],
+      "properties": {
+        "observation": "Padrão de correção de bugs",
+        "name": "Bug Fix Pattern",
+        "type": "bug"
+      }
+    },
+    {
+      "id": 2484,
+      "labels": [
+        "Learning"
+      ],
+      "properties": {
+        "observation": "Decisão arquitetural importante",
+        "name": "Architecture Decision",
+        "type": "architecture"
+      }
+    },
+    {
+      "id": 2485,
+      "labels": [
+        "Learning"
+      ],
+      "properties": {
+        "observation": "Padrão de configuração",
+        "name": "Configuration Pattern",
+        "type": "config"
+      }
+    },
+    {
+      "id": 2486,
+      "labels": [
+        "Learning"
+      ],
+      "properties": {
+        "observation": "Padrão de solução aplicado",
+        "name": "Solution Pattern",
+        "type": "solution"
+      }
+    }
+  ],
+  "relations": [
+    {
+      "source": 2479,
+      "target": 2477,
+      "type": "USES",
+      "properties": {}
+    },
+    {
+      "source": 2479,
+      "target": 2478,
+      "type": "USES",
+      "properties": {}
+    },
+    {
+      "source": 2479,
+      "target": 2480,
+      "type": "HAS",
+      "properties": {}
+    },
+    {
+      "source": 2479,
+      "target": 2481,
+      "type": "HAS",
+      "properties": {}
+    },
+    {
+      "source": 2480,
+      "target": 2477,
+      "type": "CONNECTS_TO",
+      "properties": {}
+    }
+  ]
+}

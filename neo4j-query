@@ -1,0 +1,4 @@
+#!/bin/bash
+# Helper script para executar queries no Neo4j com credenciais fixas
+
+cypher-shell -u neo4j -p password "$@"
